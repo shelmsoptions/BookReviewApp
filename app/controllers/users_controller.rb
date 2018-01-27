@@ -15,6 +15,7 @@ class UsersController < ApplicationController
   end
 
   def update
+    User.update( user_params )
   end
 
   def destroy
