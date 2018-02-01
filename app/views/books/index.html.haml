@@ -8,6 +8,8 @@
     - @books.each do |book|
       %tr
         %td= book.title
-        %td= book.user_id
+        %td= book.user.alias
+        %td= link_to 'Edit', edit_book_path( book )
+        %td= link_to 'Delete', book, method: :delete, data: { confirm: 'Certain you wanna do this?' }
       
 = link_to 'Add New Book', new_book_path
