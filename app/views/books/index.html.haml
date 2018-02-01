@@ -1,0 +1,13 @@
+%h1 Books Index
+%table.table.table-responsiveness.table-striped.table-bordered.table-hover
+  %thead
+    %th Title
+    %th Entered By
+    %th{ colspan:'2' }Action(s)
+  %tbody
+    - @books.each do |book|
+      %tr
+        %td= book.title
+        %td= book.user_id
+      
+= link_to 'Add New Book', new_book_path

@@ -1,0 +1,11 @@
+= simple_form_for @book do |book|
+
+  .form-group.row
+    = book.label :title
+    = book.text_field :title, { class: 'form-control' }
+    
+  .form-group.row
+    =book.hidden_field :user_id, value: current_user.id
+    
+  .form-actions
+    = book.submit 'Submit'
