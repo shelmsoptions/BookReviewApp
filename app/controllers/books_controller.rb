@@ -5,6 +5,7 @@ class BooksController < ApplicationController
 
   def new
     @book = Book.new
+    @book.author = Author.new
   end
 
   def create
@@ -28,10 +29,13 @@ class BooksController < ApplicationController
   end
 
   def destroy
+    Book.find( params[:id] ).destroy
+    redirect_to books_path
   end
   
   private
     def book_params
-      params.require( :book ).permit( :title, :user_id )
+      params.require( :book ).permit( :title, :user_id, :author_id,
+        author_attributes: [ :full_name ] )
     end
 end
