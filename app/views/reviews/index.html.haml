@@ -1,2 +1,17 @@
-%h1 Reviews#index
-%p Find me in app/views/reviews/index.html.haml
+%h1 Books and Reviews
+%table.table.table-responsiveness.table-striped.table-bordered.table-hover
+  %thead
+    %th Book Title
+    %th Author
+    %th Entered By
+    %th{ colspan:'2' }Action(s)
+  %tbody
+    - @reviews.each do |review|
+      %tr
+        %td= review.book.title 
+        %td= review.book.author.full_name 
+        %td= review.user.alias
+        %td= link_to 'Edit', edit_review_path( review )
+        %td= link_to 'Delete', review, method: :delete, data: { confirm: 'Ya certain you wanna do this?' }
+        
+= link_to 'Add New Book and Review', new_review_path
