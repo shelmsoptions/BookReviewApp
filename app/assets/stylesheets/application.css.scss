@@ -13,3 +13,13 @@
  */
  @import "bootstrap-sprockets";
  @import "bootstrap";
+ 
+ .navbar-default {
+  border: solid 1px #cccccc;
+  background-color: #999999;
+  width: 98%;
+}
+
+.navbar-text {
+ padding-left: 10px;
+}
