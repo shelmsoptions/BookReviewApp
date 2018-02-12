@@ -34,6 +34,8 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    Review.find( params[:id] ).destroy
+    redirect_to reviews_path
   end
   
   private
