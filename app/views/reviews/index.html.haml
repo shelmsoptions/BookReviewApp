@@ -8,7 +8,7 @@
   %tbody
     - @reviews.each do |review|
       %tr
-        %td= review.book.title 
+        %td= link_to review.book.title, edit_book_path(review.book)
         %td= review.book.author.full_name 
         %td= review.user.alias
         %td= link_to 'Edit', edit_review_path( review )

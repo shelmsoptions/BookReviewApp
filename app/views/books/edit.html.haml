@@ -1,2 +1,12 @@
-%h1 Books#edit
-%p Find me in app/views/books/edit.html.haml
+%h2 Book Edit ?
+
+%div.container-fluid
+  %div.row
+    %div.col-xs-4
+      %h1= @book.title
+      %h3 
+        by #{ @book.author.full_name }
+    %div.col-xs-8
+      %h3
+        - @reviews.each do |review|
+          = review.review_text
