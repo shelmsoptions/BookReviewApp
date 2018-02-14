@@ -14,7 +14,7 @@
  @import "bootstrap-sprockets";
  @import "bootstrap";
  
- .navbar-default {
+.navbar-default {
   border: solid 1px #cccccc;
   background-color: #999999;
   width: 98%;
@@ -30,4 +30,13 @@
 
 .col-xs-8 {
   border: 1px solid #000;
+}
+
+.col-xs-12.padded {
+  padding: 10px 2px;
+  border: 1px solid #000;
+}
+
+.bold {
+  font-weight: 700;
 }

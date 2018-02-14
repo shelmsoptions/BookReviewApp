@@ -4,30 +4,20 @@ class BooksController < ApplicationController
   end
 
   def new
-    @book = Book.new
-    @book.author = Author.new
   end
 
   def create
-    @book = Book.new( book_params )
-    @book.user_id = current_user.id
-    
-    respond_to do |format|
-      if @book.save
-        format.html { redirect_to books_path, notice: 'Book Entered' }
-      else
-        format.html { render :new, notice: 'Not saved!' }
-        format.json { render json: @book.errors, status: :unprocessable_entity }
-      end
-    end
   end
 
   def edit
     @book = Book.find( params[:id] )
     @reviews = Review.where( :book_id => @book.id )
+    @review = Review.new
   end
 
   def update
+    @review = Review.new( review_params )
+    @book = Book.find( params[:id] )
   end
 
   def destroy
@@ -39,5 +29,10 @@ class BooksController < ApplicationController
     def book_params
       params.require(:book).permit( :title, :user_id, :author_id,
         author_attributes: [ :full_name ] )
+    end
+    
+    def review_params
+      params.require( :review ).permit( :review_text, :user_id, :book_id, 
+        book_attributes: [ :title , user_attributes: [ :user_id ], author_attributes: [ :full_name ] ] )
     end
 end

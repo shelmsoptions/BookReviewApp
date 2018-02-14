@@ -1,4 +1,4 @@
-%h2 Book Edit ?
+%h2 Book Edit ? ( Review/Add Review(s) )
 
 %div.container-fluid
   %div.row
@@ -7,6 +7,30 @@
       %h3 
         by #{ @book.author.full_name }
     %div.col-xs-8
-      %h3
-        - @reviews.each do |review|
-          = review.review_text
+      - @reviews.each do |r|
+        %div.col-xs-12.padded
+          = r.review_text
+          .bold 
+            \- #{r.user.alias}
+          
+  %form-group.row
+    = simple_form_for @review do |review|
+      - if @review.errors.any? || @book.errors.any?
+        - pluralize(@review.errors.count, 'error')
+        %ul
+          - @review.errors.full_messages.each do |msg|
+            %li= msg
+          - @book.errors.full_messages.each do |msg|
+            %li= msg
+            
+      %div.col-xs-12
+        %h3
+          .form-group.row
+            = review.label :review_text, 'Enter Your Review'
+            = review.text_area :review_text, { class: 'form-control' }
+        
+      = review.hidden_field :user_id, value: current_user.id
+      = review.hidden_field :book_id, value: @book.id
+      
+      .form-actions
+        = review.submit 'Submit'
