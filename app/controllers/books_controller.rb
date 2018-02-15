@@ -17,7 +17,8 @@ class BooksController < ApplicationController
 
   def update
     @review = Review.new( review_params )
-    @book = Book.find( params[:id] )
+    # @book = Book.find( params[:id] )
+    
   end
 
   def destroy
@@ -32,7 +33,6 @@ class BooksController < ApplicationController
     end
     
     def review_params
-      params.require( :review ).permit( :review_text, :user_id, :book_id, 
-        book_attributes: [ :title , user_attributes: [ :user_id ], author_attributes: [ :full_name ] ] )
+      params.require( :review ).permit( :review_text, :user_id, :book_id )
     end
 end
