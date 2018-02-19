@@ -12,9 +12,8 @@
     = review.text_area :review_text, { class: 'form-control' }
     
   .form-actions
-    = review.submit 'Submit'
-    |
+    = review.submit 'Submit'\
   
+  = link_to 'Back', books_path
   = link_to 'Delete Review', review_path, method: :delete, data: { confirm: 'Sure? Kill it? Positive?' }
-    
-  = link_to 'Back', books_path 
+
