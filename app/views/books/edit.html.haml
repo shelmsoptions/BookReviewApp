@@ -12,6 +12,8 @@
           = r.review_text
           .bold 
             \- #{r.user.alias}
+            - if current_user === r.user
+              = link_to 'Edit Review', edit_review_path(r)
           
   %form-group.row
     = simple_form_for @review do |review|

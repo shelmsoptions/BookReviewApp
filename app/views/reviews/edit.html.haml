@@ -1,2 +1,17 @@
-%h1 Reviews#edit
-%p Find me in app/views/reviews/edit.html.haml
+%h1 Edit Review
+
+= simple_form_for @review do |review|
+  - if @review.errors.any? || @review.book.errors.any? || @review.book.author.errors.any?
+    - pluralize(@review.errors.count, 'error')
+    %ul
+      - @review.errors.full_messages.each do |msg|
+        %li= msg
+        
+  .form-group.row
+    = review.label :review_text, 'Type Review'
+    = review.text_area :review_text, { class: 'form-control' }
+    
+  .form-actions
+    = review.submit 'Submit'
+    
+  = link_to 'Back', books_path

@@ -17,8 +17,6 @@ class BooksController < ApplicationController
 
   def update
     @review = Review.new( review_params )
-    # @book = Book.find( params[:id] )
-    
   end
 
   def destroy
