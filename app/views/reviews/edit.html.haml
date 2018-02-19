@@ -13,5 +13,8 @@
     
   .form-actions
     = review.submit 'Submit'
+    |
+  
+  = link_to 'Delete Review', review_path, method: :delete, data: { confirm: 'Sure? Kill it? Positive?' }
     
-  = link_to 'Back', books_path
+  = link_to 'Back', books_path 

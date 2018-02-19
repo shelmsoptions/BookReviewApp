@@ -43,8 +43,10 @@ class ReviewsController < ApplicationController
   end
 
   def destroy
+    review = Review.find( params[:id] )
+    book_id = review.book_id
     Review.find( params[:id] ).destroy
-    redirect_to edit_book_path
+    redirect_to edit_book_path( book_id )
   end
   
   private
