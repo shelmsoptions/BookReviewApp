@@ -1,0 +1,16 @@
+%h2 Edit Book Details
+
+%div.container-fluid
+  %div.row
+    %div.col-xs-12
+      %form-group.row
+        = simple_form_for @book, :url => update_book_details_path do |book|
+          %h3
+            .form-group.row
+              = book.text_field :title, { class: 'form-control' }
+              
+          .form-actions
+            = book.submit 'Submit'
+
+          -# .form-actions
+          -#   = link_to 'Update', update_book_details_path(book), method: :patch

@@ -11,7 +11,10 @@
         %td= link_to book.title, edit_book_path(book)
         %td= book.author.full_name
         %td= book.user.alias
-        %td= link_to 'Edit', edit_book_path( book )
+        - if current_user == book.user
+          %td= link_to 'Edit', edit_book_details_path( book )
+        - else
+          %td –
         %td= link_to 'Delete', book, method: :delete, data: { confirm: 'Certain you wanna do this?' }
       
 = link_to 'Add New Book and Review', new_review_path
