@@ -20,7 +20,7 @@ class ReviewsController < ApplicationController
     
     respond_to do |format|
       if @review.save
-        format.html { redirect_to books_path, notice: 'Review and Book Entered' }
+        format.html { redirect_to edit_book_path(@review.book_id), notice: 'Review and Book Entered' }
       else
         format.html { render :new, notice: 'Not saved!' }
         format.json { render json: @review.errors, status: :unprocessable_entity }
@@ -30,6 +30,7 @@ class ReviewsController < ApplicationController
 
   def edit
     @review = Review.find( params[:id] )
+    @book = Book.find( @review.book_id )
   end
 
   def update
