@@ -22,6 +22,7 @@
       .form-group.row
         = author.label :full_name, 'Author (Full Name)'
         = author.text_field :full_name, { class: 'form-control' }
+        = author.collection_select :id, Author.all, :id, :full_name, { prompt: 'Select Author' }, { class: 'form-control' }
 
   .form-actions
     = review.submit 'Submit'
